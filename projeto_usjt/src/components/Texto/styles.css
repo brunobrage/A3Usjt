@@ -1,0 +1,26 @@
+.texto {
+  font-size: 40px; 
+}
+
+.texto .brilho {
+  animation: brilho 1s ease-in-out; 
+  font-weight: bold; 
+  color: rgb(250, 250, 220); 
+}
+
+@keyframes brilho {
+  0% {
+    text-shadow: none;
+  }
+  50% {
+    text-shadow: 0 0 10px rgb(250, 250, 220); 
+  }
+  100% {
+    text-shadow: none;
+  } 
+}
+div {
+  background-color: rgba(97, 176, 179, 0.76);
+  margin: 0px;
+  padding: 0px;
+}
