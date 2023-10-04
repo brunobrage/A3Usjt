@@ -32,7 +32,7 @@ function Texto() {
           className={index === currentIndex ? "brilho" : ""}
           style={{ display: index <= currentIndex ? "inline" : "none" }}
         >
-          {word}{' '}
+          {word}{" "}
         </span>
       ))}
     </div>

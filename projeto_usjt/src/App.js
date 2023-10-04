@@ -1,15 +1,19 @@
-import React from 'react';
-import Texto from './components/Texto/Texto';
-import Footer from './components/Footer';
+import React from "react";
+import "./styles.css";
+import styled from "styled-components";
+import AccountBox from "./components/Login/index"
 
-function App() {
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
-  return (
-    <div className="App">
-      <Texto/>
-      <Footer />
-    </div>
-  );
+export default function App() {
+  return <AppContainer>
+    <AccountBox />
+  </AppContainer>
 }
-
-export default App;
