@@ -19,7 +19,7 @@
     text-shadow: none;
   } 
 }
-div {
+.fundoLivro {
   background-color: rgba(97, 176, 179, 0.76);
   margin: 0px;
   padding: 0px;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
-function Texto() {
+function Livro() {
   const [words, setWords] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -22,21 +22,23 @@ function Texto() {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [currentIndex]);
 
   return (
-    <div className="texto">
-      {words.map((word, index) => (
-        <span
-          key={index}
-          className={index === currentIndex ? "brilho" : ""}
-          style={{ display: index <= currentIndex ? "inline" : "none" }}
-        >
-          {word}{" "}
-        </span>
-      ))}
-    </div>
+    <body className="fundoLivro" >
+      <div className="texto">
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={index === currentIndex ? "brilho" : ""}
+            style={{ display: index <= currentIndex ? "inline" : "none" }}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </div>
+    </body>
   );
 }
 
-export default Texto;
+export default Livro;

@@ -52,6 +52,7 @@ export const Input = styled.input`
 `;
 
 export const SubmitButton = styled.button`
+  text-align-last: center;
   width: 100%;
   max-width: 150px;
   padding: 10px;
