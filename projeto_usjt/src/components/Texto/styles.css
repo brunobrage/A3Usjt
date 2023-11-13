@@ -1,11 +1,13 @@
 .texto {
+  margin-top: 20px;
+  margin-left: 42px;
   font-size: 40px; 
 }
 
 .texto .brilho {
   animation: brilho 1s ease-in-out; 
   font-weight: bold; 
-  color: rgb(250, 250, 220); 
+  color: rgb(97, 222, 253); 
 }
 
 @keyframes brilho {
@@ -13,14 +15,24 @@
     text-shadow: none;
   }
   50% {
-    text-shadow: 0 0 10px rgb(250, 250, 220); 
+    text-shadow: 0 0 8px rgb(95, 187, 194); 
   }
   100% {
     text-shadow: none;
   } 
 }
-.fundoLivro {
-  background-color: rgba(97, 176, 179, 0.76);
-  margin: 0px;
-  padding: 0px;
+
+.section.visible {
+  opacity: 1;
+}
+
+.container {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+
+.section {
+  max-width: 933px;
+  opacity: 0;
 }
