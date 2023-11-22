@@ -1,6 +1,8 @@
 .texto {
   margin-top: 20px;
   font-size: 40px; 
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .texto .brilho {
@@ -33,6 +35,6 @@
 
 .section {
   margin-left: 132px;
-  max-width: 40%;
+  max-width: 50%;
   opacity: 0;
 }

@@ -15,8 +15,11 @@ function Livro() {
   const {data, isLoading} = useHistory(theme);
 
   useEffect(() => {
+    
+  const jsonString = JSON.stringify(data);
 
-    const text = data;
+  console.log(jsonString);
+    const text = jsonString;
 
     const wordsArray = text.split(" ");
     const wordsPerPage = Math.ceil(wordsArray.length / 2);
