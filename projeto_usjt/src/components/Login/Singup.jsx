@@ -6,7 +6,6 @@ import {
   FormContainer,
   Input,
   LineText,
-  MutedLink,
   SubmitButton,
 } from "./common";
 import { Marginer } from "../marginer";
@@ -18,16 +17,16 @@ export function Signup(props) {
   return (
     <BoxContainer>
       <FormContainer>
-        <Input type="text" placeholder="Full name" />
+        <Input type="text" placeholder="Nome completo" />
         <Input type="email" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
-        <Input type="password" placeholder="Confirm password" />
+        <Input type="password" placeholder="Senha" />
+        <Input type="password" placeholder="Confirmar Senha" />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <SubmitButton type="submit">Signup</SubmitButton>
       <Marginer direction="vertical" margin="5px" />
       <LineText>
-        Already have an account?{" "}
+        Você já tem conta?{" "}
         <BoldLink onClick={switchToSignin} href="#">
           Signin
         </BoldLink>

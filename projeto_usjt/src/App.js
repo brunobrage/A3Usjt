@@ -13,7 +13,9 @@ const AppContainer = styled.div`
 `;
 
 export default function App() {
-  return <AppContainer>
-    <AccountBox />
-  </AppContainer>
+  return (
+    <AppContainer>
+      <AccountBox />
+    </AppContainer>
+  )
 }
