@@ -1,6 +1,5 @@
 .texto {
   margin-top: 20px;
-  margin-left: 42px;
   font-size: 40px; 
 }
 
@@ -33,6 +32,7 @@
 }
 
 .section {
-  max-width: 933px;
+  margin-left: 132px;
+  max-width: 40%;
   opacity: 0;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import background from "./fundoLivro.jpg";
 
@@ -26,17 +26,37 @@ function Livro() {
         setCurrentWordIndex((prevIndex) => prevIndex + 1);
       } else if (currentPage < pagesArray.length - 1) {
         setCurrentPage((prevPage) => prevPage + 1);
-        setCurrentWordIndex(0);
       } else if (section <= 1) {
-        // Transição para a segunda seção
-        setSection(2);
+        changeSection(2);
       }
-    }, 600);
+    }, 20);
 
     return () => {
       clearInterval(interval);
     };
   }, [currentPage, currentWordIndex, section]);
+
+  function changeSection(section) {
+    setSection(section);
+    if (currentPage === pages.length - 1 && section === 2) {
+      return;
+    }
+    if (section === 2) {
+      setCurrentWordIndex(0);
+    } else {
+      setCurrentWordIndex(currentPage * wordsPerPage);
+    }
+
+    const firstSection = pages[0];
+    firstSection.style.position = "absolute";
+    firstSection.style.top = "0";
+    firstSection.style.left = "0";
+
+    // Oculta as palavras da segunda seção que ainda não devem ser visíveis
+    for (let i = 0; i < wordsPerPage; i++) {
+      const span = firstSection.querySelector("span:nth-child(" + (i + 1) + ")");
+      span.style.display = "none";}
+  }
 
   return (
     <body className="container" style={{ backgroundImage: `url(${background})` }}>
@@ -58,7 +78,6 @@ function Livro() {
       ))}
     </body>
   );
-  
 }
 
 export default Livro;
