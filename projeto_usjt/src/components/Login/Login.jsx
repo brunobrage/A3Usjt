@@ -63,7 +63,7 @@ export function Login() {
       <Marginer direction="vertical" margin={10} />
       <MutedLink href="#">Esqueceu a senha?</MutedLink>
       <Marginer direction="vertical" margin="1.6em" />
-      { email === "Administrador" && password === "admin" ? 
+      { email === "admin" && password === "admin" ? 
       (
         <SubmitButton as={Link} onClick={themeInput}>
         Signin
