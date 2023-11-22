@@ -6,25 +6,30 @@ import {
 } from "react-router-dom";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Livro from './components/Texto/Texto';
-import Login from './pages/Login';
+import Livro from './components/Livro/index';
+import App from './App';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <App />,
   },
   {
-    path: "/texto",
+    path: "/texto/:theme",
     element: <Livro />,
   },
 ]);
 
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </QueryClientProvider>
 );
 
 reportWebVitals();

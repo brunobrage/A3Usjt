@@ -92,7 +92,7 @@ const expandingTransition = {
   stiffness: 30,
 }
 
-export default function AccountBox(props) {
+export default function AccountBox() {
   const [isExpanded, setExpanded] = useState(false);
   const [active, setActive] = useState('signin');
 
@@ -130,14 +130,14 @@ export default function AccountBox(props) {
         transition={expandingTransition}
       />
       {active === "signin" && <HeaderContainer>
-        <HeaderText>Welcome</HeaderText>
-        <HeaderText>Back</HeaderText>
-        <SmallText>Please sign-in to continue!</SmallText>
+        <HeaderText>Bem vindo</HeaderText>
+        <HeaderText>De volta</HeaderText>
+        <SmallText>Por favor faça sign-in para continuar!</SmallText>
       </HeaderContainer>}
       {active === "signup" && <HeaderContainer>
-        <HeaderText>Create</HeaderText>
-        <HeaderText>Account</HeaderText>
-        <SmallText>Please sign-up to continue!</SmallText>
+        <HeaderText>Criar</HeaderText>
+        <HeaderText>Conta</HeaderText>
+        <SmallText>Por favor faça sign-up para continuar!</SmallText>
       </HeaderContainer>}
     </TopContainer>
     <InnerContainer>
