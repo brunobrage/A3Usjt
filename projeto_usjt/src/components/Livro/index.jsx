@@ -4,6 +4,7 @@ import background from "./fundoLivro.jpg";
 import { useHistory } from "../../hooks/useHistory";
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import Loading from "../Loading";
 
 function Livro() {
   const { theme } = useParams();
@@ -12,14 +13,18 @@ function Livro() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [section, setSection] = useState(1);
   
-  const {data, isLoading} = useHistory(theme);
+  const data = useHistory(theme);
 
   useEffect(() => {
-    
-  const jsonString = JSON.stringify(data);
+  let preText = "";
+  let texto = "";
+  if(!data.isLoading){
+    preText = JSON.stringify(data.data.completion);
+    texto = preText.replace(/\n/g , "")
+    console.log(texto.length)
+  }
 
-  console.log(jsonString);
-    const text = jsonString;
+    const text = texto;
 
     const wordsArray = text.split(" ");
     const wordsPerPage = Math.ceil(wordsArray.length / 2);
@@ -41,21 +46,22 @@ function Livro() {
         // Transição para a segunda seção
         setSection(2);
       }
-    }, 600);
+    }, 20);
 
     return () => {
       clearInterval(interval);
     };
-  }, [currentPage, currentWordIndex, data, section]);
+  }, [currentPage, currentWordIndex, data.data, data.isLoading, section]);
 
   return (
     <>
       {
-        isLoading ? 
+        data.isLoading ? 
         (
-          <>
-           <Spinner animation="border" variant="warning" />
-          </>
+          <body className="spinner">
+           <Loading />
+          </body>
+          
         ):
         (
           <body className="container" style={{ backgroundImage: `url(${background})` }}>

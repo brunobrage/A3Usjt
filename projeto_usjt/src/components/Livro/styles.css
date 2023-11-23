@@ -38,3 +38,7 @@
   max-width: 50%;
   opacity: 0;
 }
+
+.spinner{
+ background-color: grey;
+}

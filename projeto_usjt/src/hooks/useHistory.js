@@ -3,7 +3,7 @@ import api from "../services/api";
 
 export async function postHistory(tema) {
   const { data } = await api.post(`/gerar-historia/${tema}`);
-
+console.log(data)
   const history = data
   return history;
 }
