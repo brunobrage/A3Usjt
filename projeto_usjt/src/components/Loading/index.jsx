@@ -37,7 +37,7 @@ function Loading() {
           </svg>
         </li>
       </ul>
-    </div><span>Loading</span></div>
+    </div><span>Gerando Historia</span></div>
 )
 }
 export default Loading

@@ -3,7 +3,6 @@ import "./styles.css";
 import background from "./fundoLivro.jpg";
 import { useHistory } from "../../hooks/useHistory";
 import { useParams } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
 import Loading from "../Loading";
 
 function Livro() {
@@ -16,24 +15,21 @@ function Livro() {
   const data = useHistory(theme);
 
   useEffect(() => {
-  let preText = "";
-  let texto = "";
-  if(!data.isLoading){
-    preText = JSON.stringify(data.data.completion);
-    texto = preText.replace(/\n/g , "")
-    console.log(texto.length)
-  }
+    let preText = "";
+    
+    if (!data.isLoading) {
+      const text = JSON.parse(JSON.stringify(data.data.completion)); // Parse the JSON string back to an object
+      preText = text.replace(/\n|\"/g, ""); // Replace newline and double quote characters
+    }
 
-    const text = texto;
-
+    const text = preText;
     const wordsArray = text.split(" ");
     const wordsPerPage = Math.ceil(wordsArray.length / 2);
-
     const pagesArray = [];
+
     for (let i = 0; i < wordsArray.length; i += wordsPerPage) {
       pagesArray.push(wordsArray.slice(i, i + wordsPerPage));
     }
-
     setPages(pagesArray);
 
     const interval = setInterval(() => {
@@ -41,9 +37,7 @@ function Livro() {
         setCurrentWordIndex((prevIndex) => prevIndex + 1);
       } else if (currentPage < pagesArray.length - 1) {
         setCurrentPage((prevPage) => prevPage + 1);
-        setCurrentWordIndex(0);
       } else if (section <= 1) {
-        // Transição para a segunda seção
         setSection(2);
       }
     }, 20);
@@ -55,38 +49,33 @@ function Livro() {
 
   return (
     <>
-      {
-        data.isLoading ? 
-        (
-          <body className="spinner">
-           <Loading />
-          </body>
-          
-        ):
-        (
-          <body className="container" style={{ backgroundImage: `url(${background})` }}>
-            {pages.map((page, index) => (
-              <div key={index} className={`section ${index <= currentPage ? "visible" : ""}`}>
-                <div className="texto">
-                  {page.map((word, wordIndex) => (
-                    <span
-                      key={wordIndex}
-                      className={
-                        index === currentPage && wordIndex === currentWordIndex ? "brilho" : ""}
-                      style={{ display: wordIndex <= currentWordIndex ? "inline" : "none" }}
-                    >
-                      {word}{" "}
-                    </span>
-                  ))}
-                </div>
+      {data.isLoading ? (
+        <body className="spinner">
+          <Loading />
+        </body>
+      ) : (
+        <body className="container" style={{ backgroundImage: `url(${background})` }}>
+          {pages.map((page, index) => (
+            <div key={index} className={`section ${index <= currentPage ? "visible" : ""}`}>
+              <div className="texto">
+                {page.map((word, wordIndex) => (
+                  <span
+                    key={wordIndex}
+                    className={
+                      index === currentPage && wordIndex === currentWordIndex ? "brilho" : ""
+                    }
+                    style={{ display: wordIndex <= currentWordIndex ? "inline" : "none" }}
+                  >
+                    {word}{" "}
+                  </span>
+                ))}
               </div>
-            ))}
-          </body>
-        )
-      }
+            </div>
+          ))}
+        </body>
+      )}
     </>
   );
-  
 }
 
 export default Livro;
