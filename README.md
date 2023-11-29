@@ -10,4 +10,7 @@ clonar o backend (https://github.com/brunobrage/A3Back)
 rodar ele com o comando npm start run:dev
 rodar o frontend com o comando npm start
 
-Não esquecer de dar um npm install nas aplicações e no frontend entrar na pasta do projeto
+Não esquecer de dar um npm install nas aplicações e no frontend entrar na pasta do projeto.
+
+Video do Projeto:
+https://www.youtube.com/watch?v=P1_QC63GIoc
